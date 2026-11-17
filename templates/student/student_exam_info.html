@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kỳ thi / Thông tin kỳ thi - Sinh viên</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/student.css">
+</head>
+<body>
+
+<div class="lop-phu" id="lopPhu"></div>
+
+<div class="khung-chinh">
+
+    <!-- ================= MENU BÊN TRÁI ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="logo-truong">
+            <div class="logo-o-vuong"><i class="bi bi-mortarboard-fill"></i></div>
+            <div>
+                <div class="logo-ten">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-mo-ta">Hệ thống thi trắc nghiệm</div>
+            </div>
+        </div>
+
+        <div class="nhan-khu-vuc">
+            <small>Không gian làm việc</small>
+            <div>Sinh viên</div>
+        </div>
+
+        <div class="menu">
+            <a href="student_dashboard.html" data-ten="Tổng quan">
+                <i class="bi bi-grid"></i> Tổng quan
+            </a>
+            <a href="student_exams.html" data-ten="Kỳ thi" class="dang-chon">
+                <i class="bi bi-journal-text"></i> Kỳ thi
+            </a>
+            <a href="student_history.html" data-ten="Lịch sử thi">
+                <i class="bi bi-clock-history"></i> Lịch sử thi
+            </a>
+        </div>
+
+        <div class="chan-sidebar">
+            <div class="hoc-ky-hien-tai">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="menu-thoat d-flex align-items-center gap-2 px-2 py-2"
+               style="font-size:13px;color:#44536b;">
+                <i class="bi bi-box-arrow-left"></i> Đăng xuất
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= NỘI DUNG ================= -->
+    <div class="vung-noi-dung">
+
+        <!-- Thanh trên -->
+        <div class="thanh-tren">
+            <button class="nut-menu" id="nutMenu"><i class="bi bi-list"></i></button>
+            <div class="duong-dan" id="duongDan"><i class="bi bi-house"></i> / <b>Kỳ thi / Thông tin kỳ thi</b></div>
+            <button class="nut-chuong"><i class="bi bi-bell"></i><span class="cham-do"></span></button>
+            <div class="o-nguoi-dung">
+                <div class="anh-dai-dien">HP</div>
+                <div>
+                    <div class="ten-nguoi-dung">Lưu Nguyễn Hồng Phúc</div>
+                    <div class="vai-tro-nguoi-dung">MSSV: 079205002627</div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
+            </div>
+        </div>
+
+        <div class="noi-dung">
+
+<div class="man-hinh" id="manThongTinKyThi">
+                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+                    <div class="tieu-de-trang">
+                        <h1>Thông tin kỳ thi</h1>
+                        <p>Kiểm tra thông tin và đọc hướng dẫn trước khi bắt đầu.</p>
+                    </div>
+                    <button class="btn btn-vien" onclick="location.href='student_exams.html'">Quay lại danh sách</button>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-lg-8">
+                        <!-- Tên kỳ thi + 4 ô nhỏ -->
+                        <div class="the">
+                            <div class="the-than">
+                                <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
+                                    <div>
+                                        <h2 style="font-size:19px;font-weight:700;margin-bottom:3px;">
+                                            Kiểm tra giữa kỳ môn Công nghệ phần mềm
+                                        </h2>
+                                        <div style="font-size:12px;color:var(--chu-mo);">CNPM-2026-KTGK</div>
+                                    </div>
+                                    <span class="nhan-tt nhan-duong">Đang mở</span>
+                                </div>
+
+                                <div class="hang-o-nho">
+                                    <div class="o-nho">
+                                        <i class="bi bi-clock"></i>
+                                        <div>
+                                            <div class="gia-tri">45 phút</div>
+                                            <div class="nhan">Thời gian làm bài</div>
+                                        </div>
+                                    </div>
+                                    <div class="o-nho">
+                                        <i class="bi bi-list-ol"></i>
+                                        <div>
+                                            <div class="gia-tri">30 câu</div>
+                                            <div class="nhan">Số lượng câu hỏi</div>
+                                        </div>
+                                    </div>
+                                    <div class="o-nho">
+                                        <i class="bi bi-arrow-repeat"></i>
+                                        <div>
+                                            <div class="gia-tri">01 lượt</div>
+                                            <div class="nhan">Số lượt tối đa</div>
+                                        </div>
+                                    </div>
+                                    <div class="o-nho">
+                                        <i class="bi bi-key"></i>
+                                        <div>
+                                            <div class="gia-tri">Có mật khẩu</div>
+                                            <div class="nhan">Điều kiện tham gia</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lịch thi & đối tượng -->
+                        <div class="the">
+                            <div class="the-dau"><h2>Lịch thi &amp; đối tượng</h2></div>
+                            <div class="the-than pt-2" id="lichThiDoiTuong"></div>
+                        </div>
+
+                        <!-- Lưu ý -->
+                        <div class="the">
+                            <div class="the-dau"><h2>SINH VIÊN CHÚ Ý!</h2></div>
+                            <div class="the-than pt-2">
+                                <ol class="danh-sach-luu-y">
+                                    <li>Bài thi gồm 30 câu trắc nghiệm, mỗi câu chọn một hoặc nhiều đáp án.</li>
+                                    <li>Thời gian 45 phút tính ngay khi bạn nhấn <b>Xác nhận vào thi</b>.</li>
+                                    <li>Sinh viên làm xong trang nào thì nhấn <b>TRANG TIẾP</b>, qua trang KHÔNG quay lại
+                                        ĐƯỢC TRANG TRƯỚC!</li>
+                                    <li>Bài thi tự động nộp khi hết giờ.</li>
+                                    <li>Sinh viên được sử dụng tài liệu giấy khi có sự cho phép của giảng viên.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cột phải: xác nhận vào thi -->
+                    <div class="col-lg-4">
+                        <div class="the">
+                            <div class="the-dau"><h2>Xác nhận vào thi</h2></div>
+                            <div class="the-than pt-2">
+                                <div class="hang-thong-tin">
+                                    <span class="nhan">Sinh viên</span>
+                                    <span class="gia-tri">Lưu Nguyễn Hồng Phúc</span>
+                                </div>
+                                <div class="hang-thong-tin mb-3">
+                                    <span class="nhan">MSSV</span>
+                                    <span class="gia-tri">079205002627</span>
+                                </div>
+
+                                <label class="form-label">Mật khẩu kỳ thi <span style="color:#c0352f;">*</span></label>
+                                <input type="password" class="form-control" id="matKhauKyThi" value="12345678">
+                                <div class="goi-y">Nhập mật khẩu do giảng viên cung cấp.</div>
+
+                                <div class="form-check mt-3" style="font-size:12.5px;">
+                                    <input class="form-check-input" type="checkbox" id="dongYDieuKhoan" checked>
+                                    <label class="form-check-label" for="dongYDieuKhoan">
+                                        Tôi đã đọc hướng dẫn và sẵn sàng làm bài.
+                                    </label>
+                                </div>
+
+                                <button class="btn btn-chinh w-100 mt-3" id="nutVaoThi">
+                                    <i class="bi bi-box-arrow-in-right"></i> Xác nhận vào thi
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="hop-tb hop-cam">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <div>
+                                <b>Chuẩn bị trước khi vào thi</b>
+                                Đảm bảo kết nối mạng ổn định và dành đủ 45 phút để hoàn thành bài.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="chan-trang">
+            <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
+            <span>Hệ thống thi trắc nghiệm</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/student.js"></script>
+</body>
+</html>
