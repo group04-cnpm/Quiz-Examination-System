@@ -1,0 +1,235 @@
+
+/* ---------- Thẻ kỳ thi ở màn Tổng quan ---------- */
+.the-ky-thi-nho {
+    border: 1px solid var(--vien);
+    border-radius: 9px;
+    padding: 13px 14px;
+    margin-bottom: 10px;
+}
+
+.the-ky-thi-nho:hover {
+    border-color: #c9d6ec;
+    background: #fbfcfe;
+}
+
+.the-ky-thi-nho .ten {
+    font-weight: 600;
+    font-size: 13.5px;
+    margin-bottom: 2px;
+}
+
+.the-ky-thi-nho .mon {
+    font-size: 12px;
+    color: var(--chu-mo);
+    margin-bottom: 9px;
+}
+
+.the-ky-thi-nho .gio {
+    font-size: 12px;
+    color: var(--chu-mo);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* ---------- Thẻ thông tin học tập ---------- */
+.hang-thong-tin {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    font-size: 12.5px;
+    border-bottom: 1px solid #f2f4f8;
+}
+
+.hang-thong-tin:last-child {
+    border-bottom: none;
+}
+
+.hang-thong-tin .nhan {
+    color: var(--chu-mo);
+    flex-shrink: 0;
+}
+
+.hang-thong-tin .gia-tri {
+    font-weight: 600;
+    text-align: right;
+}
+
+/* ---------- Các ô nhỏ ở màn Thông tin kỳ thi ---------- */
+.hang-o-nho {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.o-nho {
+    border: 1px solid var(--vien);
+    border-radius: 9px;
+    padding: 11px 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.o-nho i {
+    color: var(--xanh-chinh);
+    font-size: 16px;
+}
+
+.o-nho .gia-tri {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.o-nho .nhan {
+    font-size: 11.5px;
+    color: var(--chu-mo);
+}
+
+/* ---------- Danh sách lưu ý ---------- */
+.danh-sach-luu-y {
+    counter-reset: dem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.danh-sach-luu-y li {
+    counter-increment: dem;
+    position: relative;
+    padding-left: 28px;
+    font-size: 12.5px;
+    margin-bottom: 9px;
+    line-height: 1.6;
+}
+
+.danh-sach-luu-y li::before {
+    content: counter(dem) ".";
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--xanh-chinh);
+}
+
+/* ---------- Thẻ điểm lớn ở màn Kết quả ---------- */
+.the-diem {
+    background: var(--xanh-chinh);
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+}
+
+.the-diem .nhan {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: .85;
+    margin-bottom: 8px;
+}
+
+.the-diem .so {
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.the-diem .thang {
+    font-size: 12.5px;
+    opacity: .85;
+    margin-top: 5px;
+}
+
+.the-diem .ket-luan {
+    display: inline-block;
+    background: #fff;
+    color: var(--xanh-dam);
+    border-radius: 20px;
+    padding: 3px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+/* ---------- Xem lại đáp án ---------- */
+.the-cau-hoi {
+    border: 1px solid var(--vien);
+    border-radius: 9px;
+    padding: 13px 14px;
+    margin-bottom: 10px;
+}
+
+.the-cau-hoi .de-bai {
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding-right: 50px;
+    position: relative;
+}
+
+.the-cau-hoi .de-bai .nhan-tt {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.hang-dap-an {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.o-dap-an .nhan {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    color: var(--chu-mo);
+    margin-bottom: 3px;
+}
+
+.o-dap-an .noi-dung {
+    font-size: 12.5px;
+}
+
+.o-dap-an.sai .noi-dung {
+    color: #c0352f;
+}
+
+.o-dap-an.dung .noi-dung {
+    color: #0f7a4a;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .hang-o-nho {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .hang-o-nho {
+        grid-template-columns: 1fr;
+    }
+
+    .hang-dap-an {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .the-diem .so {
+        font-size: 38px;
+    }
+
+    .the-cau-hoi .de-bai {
+        padding-right: 0;
+    }
+
+    .the-cau-hoi .de-bai .nhan-tt {
+        position: static;
+        display: inline-block;
+        margin-top: 6px;
+    }
+}
