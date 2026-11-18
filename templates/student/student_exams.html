@@ -12,40 +12,40 @@
 </head>
 <body>
 
-<div class="lop-phu" id="lopPhu"></div>
+<div class="overlay" id="overlay"></div>
 
-<div class="khung-chinh">
+<div class="main-wrapper">
 
     <!-- ================= MENU BÊN TRÁI ================= -->
     <div class="sidebar" id="sidebar">
-        <div class="logo-truong">
-            <div class="logo-o-vuong"><i class="bi bi-mortarboard-fill"></i></div>
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
             <div>
-                <div class="logo-ten">ĐẠI HỌC GTVT HCM</div>
-                <div class="logo-mo-ta">Hệ thống thi trắc nghiệm</div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
             </div>
         </div>
 
-        <div class="nhan-khu-vuc">
+        <div class="section-label">
             <small>Không gian làm việc</small>
             <div>Sinh viên</div>
         </div>
 
         <div class="menu">
-            <a href="student_dashboard.html" data-ten="Tổng quan">
+            <a href="student_dashboard.html" data-name="Tổng quan">
                 <i class="bi bi-grid"></i> Tổng quan
             </a>
-            <a href="student_exams.html" data-ten="Kỳ thi" class="dang-chon">
+            <a href="student_exams.html" data-name="Kỳ thi" class="active">
                 <i class="bi bi-journal-text"></i> Kỳ thi
             </a>
-            <a href="student_history.html" data-ten="Lịch sử thi">
+            <a href="student_history.html" data-name="Lịch sử thi">
                 <i class="bi bi-clock-history"></i> Lịch sử thi
             </a>
         </div>
 
-        <div class="chan-sidebar">
-            <div class="hoc-ky-hien-tai">Học kỳ N • 2026–2027</div>
-            <a href="../login.html" class="menu-thoat d-flex align-items-center gap-2 px-2 py-2"
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="logout-link d-flex align-items-center gap-2 px-2 py-2"
                style="font-size:13px;color:#44536b;">
                 <i class="bi bi-box-arrow-left"></i> Đăng xuất
             </a>
@@ -53,48 +53,48 @@
     </div>
 
     <!-- ================= NỘI DUNG ================= -->
-    <div class="vung-noi-dung">
+    <div class="content-area">
 
         <!-- Thanh trên -->
-        <div class="thanh-tren">
-            <button class="nut-menu" id="nutMenu"><i class="bi bi-list"></i></button>
-            <div class="duong-dan" id="duongDan"><i class="bi bi-house"></i> / <b>Kỳ thi</b></div>
-            <button class="nut-chuong"><i class="bi bi-bell"></i><span class="cham-do"></span></button>
-            <div class="o-nguoi-dung">
-                <div class="anh-dai-dien">HP</div>
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Kỳ thi</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">HP</div>
                 <div>
-                    <div class="ten-nguoi-dung">Lưu Nguyễn Hồng Phúc</div>
-                    <div class="vai-tro-nguoi-dung">MSSV: 079205002627</div>
+                    <div class="user-name">Lưu Nguyễn Hồng Phúc</div>
+                    <div class="user-role">MSSV: 079205002627</div>
                 </div>
                 <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
             </div>
         </div>
 
-        <div class="noi-dung">
+        <div class="page-content">
 
-<div class="man-hinh" id="manKyThi">
-                <div class="tieu-de-trang mb-3">
+<div class="screen-view" id="examsScreen">
+                <div class="page-header mb-3">
                     <h1>Danh sách kỳ thi</h1>
                     <p>Các kỳ thi được phân công cho lớp CNTT K25 trong học kỳ hiện tại.</p>
                 </div>
 
-                <div class="the">
+                <div class="card-box">
                     <!-- Tab lọc trạng thái -->
-                    <div class="hang-tab px-2" id="tabKyThi">
-                        <button class="dang-chon" data-loc="Tất cả">Tất cả (12)</button>
-                        <button data-loc="Đang mở">Đang mở (3)</button>
-                        <button data-loc="Sắp diễn ra">Sắp diễn ra (2)</button>
-                        <button data-loc="Đã hoàn thành">Đã hoàn thành (6)</button>
-                        <button data-loc="Đã đóng">Đã đóng (1)</button>
+                    <div class="tab-row px-2" id="examTabs">
+                        <button class="active" data-filter="Tất cả">Tất cả (12)</button>
+                        <button data-filter="Đang mở">Đang mở (3)</button>
+                        <button data-filter="Sắp diễn ra">Sắp diễn ra (2)</button>
+                        <button data-filter="Đã hoàn thành">Đã hoàn thành (6)</button>
+                        <button data-filter="Đã đóng">Đã đóng (1)</button>
                     </div>
 
                     <!-- Thanh tìm kiếm + lọc -->
-                    <div class="the-than">
+                    <div class="card-body-custom">
                         <div class="row g-2">
                             <div class="col-lg-6">
-                                <div class="o-tim">
+                                <div class="search-box">
                                     <i class="bi bi-search"></i>
-                                    <input type="text" class="form-control" id="timKyThi"
+                                    <input type="text" class="form-control" id="searchExam"
                                            placeholder="Tìm theo tên kỳ thi, mã kỳ thi...">
                                 </div>
                             </div>
@@ -117,7 +117,7 @@
 
                     <!-- Bảng kỳ thi -->
                     <div class="px-0">
-                        <table class="bang">
+                        <table class="data-table">
                             <thead>
                             <tr>
                                 <th>Kỳ thi / Môn học</th>
@@ -128,15 +128,15 @@
                                 <th>Thao tác</th>
                             </tr>
                             </thead>
-                            <tbody id="bangKyThi"></tbody>
+                            <tbody id="examTable"></tbody>
                         </table>
                     </div>
 
-                    <div class="phan-trang">
+                    <div class="pagination-bar">
                         <span>Hiển thị 1–8 trong 12 kỳ thi</span>
-                        <div class="cac-trang">
+                        <div class="page-numbers">
                             <button>‹</button>
-                            <button class="dang-chon">1</button>
+                            <button class="active">1</button>
                             <button>2</button>
                             <button>3</button>
                             <button>›</button>
@@ -144,7 +144,7 @@
                     </div>
                 </div>
 
-                <div class="hop-tb hop-duong">
+                <div class="alert-box alert-blue">
                     <i class="bi bi-info-circle-fill"></i>
                     <div>
                         <b>Lưu ý về lượt thi</b>
@@ -157,7 +157,7 @@
 
         </div>
 
-        <div class="chan-trang">
+        <div class="page-footer">
             <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
             <span>Hệ thống thi trắc nghiệm</span>
         </div>

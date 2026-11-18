@@ -13,40 +13,40 @@
 </head>
 <body>
 
-<div class="lop-phu" id="lopPhu"></div>
+<div class="overlay" id="overlay"></div>
 
-<div class="khung-chinh">
+<div class="main-wrapper">
 
     <!-- ================= MENU BÊN TRÁI ================= -->
     <div class="sidebar" id="sidebar">
-        <div class="logo-truong">
-            <div class="logo-o-vuong"><i class="bi bi-mortarboard-fill"></i></div>
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
             <div>
-                <div class="logo-ten">ĐẠI HỌC GTVT HCM</div>
-                <div class="logo-mo-ta">Hệ thống thi trắc nghiệm</div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
             </div>
         </div>
 
-        <div class="nhan-khu-vuc">
+        <div class="section-label">
             <small>Không gian làm việc</small>
             <div>Sinh viên</div>
         </div>
 
         <div class="menu">
-            <a href="student_dashboard.html" data-ten="Tổng quan">
+            <a href="student_dashboard.html" data-name="Tổng quan">
                 <i class="bi bi-grid"></i> Tổng quan
             </a>
-            <a href="student_exams.html" data-ten="Kỳ thi" class="dang-chon">
+            <a href="student_exams.html" data-name="Kỳ thi" class="active">
                 <i class="bi bi-journal-text"></i> Kỳ thi
             </a>
-            <a href="student_history.html" data-ten="Lịch sử thi">
+            <a href="student_history.html" data-name="Lịch sử thi">
                 <i class="bi bi-clock-history"></i> Lịch sử thi
             </a>
         </div>
 
-        <div class="chan-sidebar">
-            <div class="hoc-ky-hien-tai">Học kỳ N • 2026–2027</div>
-            <a href="../login.html" class="menu-thoat d-flex align-items-center gap-2 px-2 py-2"
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="logout-link d-flex align-items-center gap-2 px-2 py-2"
                style="font-size:13px;color:#44536b;">
                 <i class="bi bi-box-arrow-left"></i> Đăng xuất
             </a>
@@ -54,76 +54,76 @@
     </div>
 
     <!-- ================= NỘI DUNG ================= -->
-    <div class="vung-noi-dung">
+    <div class="content-area">
 
         <!-- Thanh trên -->
-        <div class="thanh-tren">
-            <button class="nut-menu" id="nutMenu"><i class="bi bi-list"></i></button>
-            <div class="duong-dan" id="duongDan"><i class="bi bi-house"></i> / <b>Kỳ thi / Thông tin kỳ thi</b></div>
-            <button class="nut-chuong"><i class="bi bi-bell"></i><span class="cham-do"></span></button>
-            <div class="o-nguoi-dung">
-                <div class="anh-dai-dien">HP</div>
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Kỳ thi / Thông tin kỳ thi</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">HP</div>
                 <div>
-                    <div class="ten-nguoi-dung">Lưu Nguyễn Hồng Phúc</div>
-                    <div class="vai-tro-nguoi-dung">MSSV: 079205002627</div>
+                    <div class="user-name">Lưu Nguyễn Hồng Phúc</div>
+                    <div class="user-role">MSSV: 079205002627</div>
                 </div>
                 <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
             </div>
         </div>
 
-        <div class="noi-dung">
+        <div class="page-content">
 
-<div class="man-hinh" id="manThongTinKyThi">
+<div class="screen-view" id="examInfoScreen">
                 <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
-                    <div class="tieu-de-trang">
+                    <div class="page-header">
                         <h1>Thông tin kỳ thi</h1>
                         <p>Kiểm tra thông tin và đọc hướng dẫn trước khi bắt đầu.</p>
                     </div>
-                    <button class="btn btn-vien" onclick="location.href='student_exams.html'">Quay lại danh sách</button>
+                    <button class="btn btn-outline-custom" onclick="location.href='student_exams.html'">Quay lại danh sách</button>
                 </div>
 
                 <div class="row g-3">
                     <div class="col-lg-8">
                         <!-- Tên kỳ thi + 4 ô nhỏ -->
-                        <div class="the">
-                            <div class="the-than">
+                        <div class="card-box">
+                            <div class="card-body-custom">
                                 <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap">
                                     <div>
                                         <h2 style="font-size:19px;font-weight:700;margin-bottom:3px;">
                                             Kiểm tra giữa kỳ môn Công nghệ phần mềm
                                         </h2>
-                                        <div style="font-size:12px;color:var(--chu-mo);">CNPM-2026-KTGK</div>
+                                        <div style="font-size:12px;color:var(--text-muted);">CNPM-2026-KTGK</div>
                                     </div>
-                                    <span class="nhan-tt nhan-duong">Đang mở</span>
+                                    <span class="status-badge badge-blue">Đang mở</span>
                                 </div>
 
-                                <div class="hang-o-nho">
-                                    <div class="o-nho">
+                                <div class="small-box-row">
+                                    <div class="small-box">
                                         <i class="bi bi-clock"></i>
                                         <div>
-                                            <div class="gia-tri">45 phút</div>
-                                            <div class="nhan">Thời gian làm bài</div>
+                                            <div class="value">45 phút</div>
+                                            <div class="label">Thời gian làm bài</div>
                                         </div>
                                     </div>
-                                    <div class="o-nho">
+                                    <div class="small-box">
                                         <i class="bi bi-list-ol"></i>
                                         <div>
-                                            <div class="gia-tri">30 câu</div>
-                                            <div class="nhan">Số lượng câu hỏi</div>
+                                            <div class="value">30 câu</div>
+                                            <div class="label">Số lượng câu hỏi</div>
                                         </div>
                                     </div>
-                                    <div class="o-nho">
+                                    <div class="small-box">
                                         <i class="bi bi-arrow-repeat"></i>
                                         <div>
-                                            <div class="gia-tri">01 lượt</div>
-                                            <div class="nhan">Số lượt tối đa</div>
+                                            <div class="value">01 lượt</div>
+                                            <div class="label">Số lượt tối đa</div>
                                         </div>
                                     </div>
-                                    <div class="o-nho">
+                                    <div class="small-box">
                                         <i class="bi bi-key"></i>
                                         <div>
-                                            <div class="gia-tri">Có mật khẩu</div>
-                                            <div class="nhan">Điều kiện tham gia</div>
+                                            <div class="value">Có mật khẩu</div>
+                                            <div class="label">Điều kiện tham gia</div>
                                         </div>
                                     </div>
                                 </div>
@@ -131,16 +131,16 @@
                         </div>
 
                         <!-- Lịch thi & đối tượng -->
-                        <div class="the">
-                            <div class="the-dau"><h2>Lịch thi &amp; đối tượng</h2></div>
-                            <div class="the-than pt-2" id="lichThiDoiTuong"></div>
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Lịch thi &amp; đối tượng</h2></div>
+                            <div class="card-body-custom pt-2" id="examScheduleContainer"></div>
                         </div>
 
                         <!-- Lưu ý -->
-                        <div class="the">
-                            <div class="the-dau"><h2>SINH VIÊN CHÚ Ý!</h2></div>
-                            <div class="the-than pt-2">
-                                <ol class="danh-sach-luu-y">
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>SINH VIÊN CHÚ Ý!</h2></div>
+                            <div class="card-body-custom pt-2">
+                                <ol class="note-list">
                                     <li>Bài thi gồm 30 câu trắc nghiệm, mỗi câu chọn một hoặc nhiều đáp án.</li>
                                     <li>Thời gian 45 phút tính ngay khi bạn nhấn <b>Xác nhận vào thi</b>.</li>
                                     <li>Sinh viên làm xong trang nào thì nhấn <b>TRANG TIẾP</b>, qua trang KHÔNG quay lại
@@ -154,36 +154,36 @@
 
                     <!-- Cột phải: xác nhận vào thi -->
                     <div class="col-lg-4">
-                        <div class="the">
-                            <div class="the-dau"><h2>Xác nhận vào thi</h2></div>
-                            <div class="the-than pt-2">
-                                <div class="hang-thong-tin">
-                                    <span class="nhan">Sinh viên</span>
-                                    <span class="gia-tri">Lưu Nguyễn Hồng Phúc</span>
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Xác nhận vào thi</h2></div>
+                            <div class="card-body-custom pt-2">
+                                <div class="info-row">
+                                    <span class="label">Sinh viên</span>
+                                    <span class="value">Lưu Nguyễn Hồng Phúc</span>
                                 </div>
-                                <div class="hang-thong-tin mb-3">
-                                    <span class="nhan">MSSV</span>
-                                    <span class="gia-tri">079205002627</span>
+                                <div class="info-row mb-3">
+                                    <span class="label">MSSV</span>
+                                    <span class="value">079205002627</span>
                                 </div>
 
                                 <label class="form-label">Mật khẩu kỳ thi <span style="color:#c0352f;">*</span></label>
-                                <input type="password" class="form-control" id="matKhauKyThi" value="12345678">
-                                <div class="goi-y">Nhập mật khẩu do giảng viên cung cấp.</div>
+                                <input type="password" class="form-control" id="examPassword" value="12345678">
+                                <div class="hint-text">Nhập mật khẩu do giảng viên cung cấp.</div>
 
                                 <div class="form-check mt-3" style="font-size:12.5px;">
-                                    <input class="form-check-input" type="checkbox" id="dongYDieuKhoan" checked>
-                                    <label class="form-check-label" for="dongYDieuKhoan">
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms" checked>
+                                    <label class="form-check-label" for="agreeTerms">
                                         Tôi đã đọc hướng dẫn và sẵn sàng làm bài.
                                     </label>
                                 </div>
 
-                                <button class="btn btn-chinh w-100 mt-3" id="nutVaoThi">
+                                <button class="btn btn-primary-custom w-100 mt-3" id="startExamBtn">
                                     <i class="bi bi-box-arrow-in-right"></i> Xác nhận vào thi
                                 </button>
                             </div>
                         </div>
 
-                        <div class="hop-tb hop-cam">
+                        <div class="alert-box alert-orange">
                             <i class="bi bi-exclamation-triangle-fill"></i>
                             <div>
                                 <b>Chuẩn bị trước khi vào thi</b>
@@ -197,7 +197,7 @@
 
         </div>
 
-        <div class="chan-trang">
+        <div class="page-footer">
             <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
             <span>Hệ thống thi trắc nghiệm</span>
         </div>
