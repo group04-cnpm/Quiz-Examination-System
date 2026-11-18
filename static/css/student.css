@@ -1,39 +1,38 @@
-
 /* ---------- Thẻ kỳ thi ở màn Tổng quan ---------- */
-.the-ky-thi-nho {
-    border: 1px solid var(--vien);
+.mini-exam-card {
+    border: 1px solid var(--border-color);
     border-radius: 9px;
     padding: 13px 14px;
     margin-bottom: 10px;
 }
 
-.the-ky-thi-nho:hover {
+.mini-exam-card:hover {
     border-color: #c9d6ec;
     background: #fbfcfe;
 }
 
-.the-ky-thi-nho .ten {
+.mini-exam-card .name {
     font-weight: 600;
     font-size: 13.5px;
     margin-bottom: 2px;
 }
 
-.the-ky-thi-nho .mon {
+.mini-exam-card .subject {
     font-size: 12px;
-    color: var(--chu-mo);
+    color: var(--text-muted);
     margin-bottom: 9px;
 }
 
-.the-ky-thi-nho .gio {
+.mini-exam-card .time {
     font-size: 12px;
-    color: var(--chu-mo);
+    color: var(--text-muted);
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
 /* ---------- Thẻ thông tin học tập ---------- */
-.hang-thong-tin {
+.info-row {
     display: flex;
     justify-content: space-between;
     gap: 12px;
@@ -42,30 +41,30 @@
     border-bottom: 1px solid #f2f4f8;
 }
 
-.hang-thong-tin:last-child {
+.info-row:last-child {
     border-bottom: none;
 }
 
-.hang-thong-tin .nhan {
-    color: var(--chu-mo);
+.info-row .label {
+    color: var(--text-muted);
     flex-shrink: 0;
 }
 
-.hang-thong-tin .gia-tri {
+.info-row .value {
     font-weight: 600;
     text-align: right;
 }
 
 /* ---------- Các ô nhỏ ở màn Thông tin kỳ thi ---------- */
-.hang-o-nho {
+.small-box-row {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-top: 14px;
 }
 
-.o-nho {
-    border: 1px solid var(--vien);
+.small-box {
+    border: 1px solid var(--border-color);
     border-radius: 9px;
     padding: 11px 13px;
     display: flex;
@@ -73,32 +72,32 @@
     gap: 10px;
 }
 
-.o-nho i {
-    color: var(--xanh-chinh);
+.small-box i {
+    color: var(--primary-blue);
     font-size: 16px;
 }
 
-.o-nho .gia-tri {
+.small-box .value {
     font-weight: 700;
     font-size: 14px;
     line-height: 1.2;
 }
 
-.o-nho .nhan {
+.small-box .label {
     font-size: 11.5px;
-    color: var(--chu-mo);
+    color: var(--text-muted);
 }
 
 /* ---------- Danh sách lưu ý ---------- */
-.danh-sach-luu-y {
-    counter-reset: dem;
+.note-list {
+    counter-reset: count-item;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.danh-sach-luu-y li {
-    counter-increment: dem;
+.note-list li {
+    counter-increment: count-item;
     position: relative;
     padding-left: 28px;
     font-size: 12.5px;
@@ -106,24 +105,24 @@
     line-height: 1.6;
 }
 
-.danh-sach-luu-y li::before {
-    content: counter(dem) ".";
+.note-list li::before {
+    content: counter(count-item) ".";
     position: absolute;
     left: 0;
     font-weight: 700;
-    color: var(--xanh-chinh);
+    color: var(--primary-blue);
 }
 
 /* ---------- Thẻ điểm lớn ở màn Kết quả ---------- */
-.the-diem {
-    background: var(--xanh-chinh);
+.score-card {
+    background: var(--primary-blue);
     color: #fff;
     border-radius: 10px;
     padding: 22px;
     text-align: center;
 }
 
-.the-diem .nhan {
+.score-card .label {
     font-size: 11px;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -131,22 +130,22 @@
     margin-bottom: 8px;
 }
 
-.the-diem .so {
+.score-card .number {
     font-size: 46px;
     font-weight: 700;
     line-height: 1;
 }
 
-.the-diem .thang {
+.score-card .scale {
     font-size: 12.5px;
     opacity: .85;
     margin-top: 5px;
 }
 
-.the-diem .ket-luan {
+.score-card .conclusion {
     display: inline-block;
     background: #fff;
-    color: var(--xanh-dam);
+    color: var(--dark-blue);
     border-radius: 20px;
     padding: 3px 14px;
     font-size: 12px;
@@ -155,14 +154,14 @@
 }
 
 /* ---------- Xem lại đáp án ---------- */
-.the-cau-hoi {
-    border: 1px solid var(--vien);
+.question-card {
+    border: 1px solid var(--border-color);
     border-radius: 9px;
     padding: 13px 14px;
     margin-bottom: 10px;
 }
 
-.the-cau-hoi .de-bai {
+.question-card .question-text {
     font-weight: 600;
     font-size: 13px;
     margin-bottom: 10px;
@@ -170,64 +169,64 @@
     position: relative;
 }
 
-.the-cau-hoi .de-bai .nhan-tt {
+.question-card .question-text .status-badge {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.hang-dap-an {
+.answer-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
 
-.o-dap-an .nhan {
+.answer-box .label {
     font-size: 10.5px;
     text-transform: uppercase;
     letter-spacing: .3px;
-    color: var(--chu-mo);
+    color: var(--text-muted);
     margin-bottom: 3px;
 }
 
-.o-dap-an .noi-dung {
+.answer-box .content {
     font-size: 12.5px;
 }
 
-.o-dap-an.sai .noi-dung {
+.answer-box.wrong .content {
     color: #c0352f;
 }
 
-.o-dap-an.dung .noi-dung {
+.answer-box.correct .content {
     color: #0f7a4a;
 }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 991.98px) {
-    .hang-o-nho {
+    .small-box-row {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 575.98px) {
-    .hang-o-nho {
+    .small-box-row {
         grid-template-columns: 1fr;
     }
 
-    .hang-dap-an {
+    .answer-row {
         grid-template-columns: 1fr;
         gap: 8px;
     }
 
-    .the-diem .so {
+    .score-card .number {
         font-size: 38px;
     }
 
-    .the-cau-hoi .de-bai {
+    .question-card .question-text {
         padding-right: 0;
     }
 
-    .the-cau-hoi .de-bai .nhan-tt {
+    .question-card .question-text .status-badge {
         position: static;
         display: inline-block;
         margin-top: 6px;

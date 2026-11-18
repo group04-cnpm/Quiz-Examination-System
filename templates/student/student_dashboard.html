@@ -12,40 +12,40 @@
 </head>
 <body>
 
-<div class="lop-phu" id="lopPhu"></div>
+<div class="overlay" id="overlay"></div>
 
-<div class="khung-chinh">
+<div class="main-wrapper">
 
     <!-- ================= MENU BÊN TRÁI ================= -->
     <div class="sidebar" id="sidebar">
-        <div class="logo-truong">
-            <div class="logo-o-vuong"><i class="bi bi-mortarboard-fill"></i></div>
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
             <div>
-                <div class="logo-ten">ĐẠI HỌC GTVT HCM</div>
-                <div class="logo-mo-ta">Hệ thống thi trắc nghiệm</div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
             </div>
         </div>
 
-        <div class="nhan-khu-vuc">
+        <div class="section-label">
             <small>Không gian làm việc</small>
             <div>Sinh viên</div>
         </div>
 
         <div class="menu">
-            <a href="student_dashboard.html" data-ten="Tổng quan" class="dang-chon">
+            <a href="student_dashboard.html" data-name="Tổng quan" class="active">
                 <i class="bi bi-grid"></i> Tổng quan
             </a>
-            <a href="student_exams.html" data-ten="Kỳ thi">
+            <a href="student_exams.html" data-name="Kỳ thi">
                 <i class="bi bi-journal-text"></i> Kỳ thi
             </a>
-            <a href="student_history.html" data-ten="Lịch sử thi">
+            <a href="student_history.html" data-name="Lịch sử thi">
                 <i class="bi bi-clock-history"></i> Lịch sử thi
             </a>
         </div>
 
-        <div class="chan-sidebar">
-            <div class="hoc-ky-hien-tai">Học kỳ N • 2026–2027</div>
-            <a href="../login.html" class="menu-thoat d-flex align-items-center gap-2 px-2 py-2"
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="logout-link d-flex align-items-center gap-2 px-2 py-2"
                style="font-size:13px;color:#44536b;">
                 <i class="bi bi-box-arrow-left"></i> Đăng xuất
             </a>
@@ -53,36 +53,36 @@
     </div>
 
     <!-- ================= NỘI DUNG ================= -->
-    <div class="vung-noi-dung">
+    <div class="content-area">
 
         <!-- Thanh trên -->
-        <div class="thanh-tren">
-            <button class="nut-menu" id="nutMenu"><i class="bi bi-list"></i></button>
-            <div class="duong-dan" id="duongDan"><i class="bi bi-house"></i> / <b>Tổng quan</b></div>
-            <button class="nut-chuong"><i class="bi bi-bell"></i><span class="cham-do"></span></button>
-            <div class="o-nguoi-dung">
-                <div class="anh-dai-dien">HP</div>
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Tổng quan</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">HP</div>
                 <div>
-                    <div class="ten-nguoi-dung">Lưu Nguyễn Hồng Phúc</div>
-                    <div class="vai-tro-nguoi-dung">MSSV: 079205002627</div>
+                    <div class="user-name">Lưu Nguyễn Hồng Phúc</div>
+                    <div class="user-role">MSSV: 079205002627</div>
                 </div>
                 <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
             </div>
         </div>
 
-        <div class="noi-dung">
+        <div class="page-content">
 
-<div class="man-hinh" id="manTongQuan">
-                <div class="tieu-de-trang mb-3">
-                    <h1 id="loiChao">Chào buổi sáng, Hồng Phúc!</h1>
-                    <p id="dongNgay">Đang tải...</p>
+<div class="screen-view" id="dashboardScreen">
+                <div class="page-header mb-3">
+                    <h1 id="greetingText">Chào buổi sáng, Hồng Phúc!</h1>
+                    <p id="dateLine">Đang tải...</p>
                 </div>
 
                 <!-- 4 ô số liệu -->
-                <div class="row g-3 mb-3" id="oSoLieuSV"></div>
+                <div class="row g-3 mb-3" id="studentStatsContainer"></div>
 
                 <!-- Thông báo kỳ thi đang mở -->
-                <div class="hop-tb hop-duong">
+                <div class="alert-box alert-blue">
                     <i class="bi bi-info-circle-fill"></i>
                     <div>
                         <b>Kỳ thi Cơ sở dữ liệu đã mở</b>
@@ -93,27 +93,27 @@
                 <div class="row g-3">
                     <!-- Cột trái: danh sách kỳ thi -->
                     <div class="col-lg-7">
-                        <div class="the">
-                            <div class="the-dau d-flex justify-content-between align-items-start">
+                        <div class="card-box">
+                            <div class="card-header-custom d-flex justify-content-between align-items-start">
                                 <div>
                                     <h2>Kỳ thi dành cho bạn</h2>
                                 </div>
-                                <a href="student_exams.html" class="xem-tat-ca" style="font-size:12.5px;">Xem tất cả →</a>
+                                <a href="student_exams.html" class="view-all-link" style="font-size:12.5px;">Xem tất cả →</a>
                             </div>
-                            <div class="the-than" id="dsKyThiNoiBat"></div>
+                            <div class="card-body-custom" id="featuredExamsContainer"></div>
                         </div>
                     </div>
 
                     <!-- Cột phải: thông tin học tập + lưu ý -->
                     <div class="col-lg-5">
-                        <div class="the">
-                            <div class="the-dau"><h2>Thông tin học tập</h2></div>
-                            <div class="the-than pt-2" id="thongTinHocTap"></div>
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Thông tin học tập</h2></div>
+                            <div class="card-body-custom pt-2" id="academicInfoContainer"></div>
                         </div>
 
-                        <div class="the">
-                            <div class="the-dau"><h2>Lưu ý khi dự thi</h2></div>
-                            <div class="the-than pt-2" style="font-size:12.5px;color:var(--chu-mo);line-height:1.7;">
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Lưu ý khi dự thi</h2></div>
+                            <div class="card-body-custom pt-2" style="font-size:12.5px;color:var(--text-muted);line-height:1.7;">
                                 Kiểm tra thời gian mở thi và số lượt thi trước khi bắt đầu.
                                 Bài thi sẽ tự động nộp khi đồng hồ đếm ngược về 00:00.
                             </div>
@@ -122,10 +122,10 @@
                 </div>
 
                 <!-- Kết quả gần đây -->
-                <div class="the">
-                    <div class="the-dau"><h2>Kết quả gần đây</h2></div>
-                    <div class="the-than pt-2 px-0">
-                        <table class="bang">
+                <div class="card-box">
+                    <div class="card-header-custom"><h2>Kết quả gần đây</h2></div>
+                    <div class="card-body-custom pt-2 px-0">
+                        <table class="data-table">
                             <thead>
                             <tr>
                                 <th>Kỳ thi</th>
@@ -135,7 +135,7 @@
                                 <th>Thao tác</th>
                             </tr>
                             </thead>
-                            <tbody id="bangKetQuaGanDay"></tbody>
+                            <tbody id="recentResultsTable"></tbody>
                         </table>
                     </div>
                 </div>
@@ -144,7 +144,7 @@
 
         </div>
 
-        <div class="chan-trang">
+        <div class="page-footer">
             <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
             <span>Hệ thống thi trắc nghiệm</span>
         </div>
