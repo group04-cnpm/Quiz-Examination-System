@@ -5,67 +5,67 @@
 /* Gọi API bằng fetch.
    Nếu backend chưa chạy xong thì lấy tạm dữ liệu giả
    để test giao diện . */
-async function goiAPI(duongDan, duLieuGia) {
+async function callAPI(url, mockData) {
     try {
-        const res = await fetch(duongDan);
+        const res = await fetch(url);
         if (!res.ok) {
             throw new Error("Lỗi " + res.status);
         }
         return await res.json();
     } catch (err) {
-        console.warn("Chưa gọi được " + duongDan + " -> dùng dữ liệu giả.", err.message);
+        console.warn("Chưa gọi được " + url + " -> dùng dữ liệu giả.", err.message);
         // giả độ trễ mạng một chút cho giống thật
         await new Promise(r => setTimeout(r, 150));
-        return duLieuGia;
+        return mockData;
     }
 }
 
 /* Gửi dữ liệu lên server (POST) */
-async function guiAPI(duongDan, duLieu) {
+async function postAPI(url, data) {
     try {
-        const res = await fetch(duongDan, {
+        const res = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(duLieu)
+            body: JSON.stringify(data)
         });
         return await res.json();
     } catch (err) {
-        console.warn("Chưa gửi được " + duongDan, err.message);
-        return { status: "ok", ghi_chu: "dữ liệu giả" };
+        console.warn("Chưa gửi được " + url, err.message);
+        return { status: "ok", note: "dữ liệu giả" };
     }
 }
 
 /* Lấy thẻ theo id.
     */
-function lay(id) {
+function getEl(id) {
     return document.getElementById(id) || {};
 }
 
 /* Mở / đóng menu bên trái trên điện thoại */
-function batMenu() {
-    const nut = document.getElementById("nutMenu");
+function initMenu() {
+    const button = document.getElementById("menuBtn");
     const sidebar = document.getElementById("sidebar");
-    const lopPhu = document.getElementById("lopPhu");
+    const overlay = document.getElementById("overlay");
 
-    if (!nut) return;
+    if (!button) return;
 
-    nut.onclick = function () {
-        sidebar.classList.add("mo");
-        lopPhu.classList.add("hien");
+    button.onclick = function () {
+        sidebar.classList.add("open");
+        overlay.classList.add("show");
     };
 
-    lopPhu.onclick = function () {
-        sidebar.classList.remove("mo");
-        lopPhu.classList.remove("hien");
+    overlay.onclick = function () {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
     };
 
     // bấm vào menu thì đóng luôn (trên điện thoại)
-    const cacLink = document.querySelectorAll(".menu a");
-    for (let i = 0; i < cacLink.length; i++) {
-        cacLink[i].addEventListener("click", function () {
+    const links = document.querySelectorAll(".menu a");
+    for (let i = 0; i < links.length; i++) {
+        links[i].addEventListener("click", function () {
             if (window.innerWidth < 992) {
-                sidebar.classList.remove("mo");
-                lopPhu.classList.remove("hien");
+                sidebar.classList.remove("open");
+                overlay.classList.remove("show");
             }
         });
     }
@@ -73,29 +73,29 @@ function batMenu() {
 
 
 /* Đổi số thành dạng có dấu chấm: 1248 -> 1.248 */
-function dinhDangSo(so) {
-    return so.toLocaleString("vi-VN");
+function formatNumber(number) {
+    return number.toLocaleString("vi-VN");
 }
 
 /* Tạo nhãn trạng thái (badge) theo tên trạng thái */
-function nhanTrangThai(trangThai) {
-    let mau = "nhan-xam";
+function renderStatusBadge(status) {
+    let colorClass = "badge-gray";
 
-    if (trangThai === "Đang mở" || trangThai === "Hoạt động" || trangThai === "Cho phép") {
-        mau = "nhan-duong";
-    } else if (trangThai === "Đã kết thúc" || trangThai === "Đạt" || trangThai === "Dễ"
-        || trangThai === "Thành công" || trangThai === "Đã hoàn thành" || trangThai === "Đang sử dụng") {
-        mau = "nhan-xanh";
-    } else if (trangThai === "Sắp diễn ra" || trangThai === "Trung bình" || trangThai === "Chưa công bố") {
-        mau = "nhan-cam";
-    } else if (trangThai === "Chưa đạt" || trangThai === "Khó" || trangThai === "Sai") {
-        mau = "nhan-do";
+    if (status === "Đang mở" || status === "Hoạt động" || status === "Cho phép") {
+        colorClass = "badge-blue";
+    } else if (status === "Đã kết thúc" || status === "Đạt" || status === "Dễ"
+        || status === "Thành công" || status === "Đã hoàn thành" || status === "Đang sử dụng") {
+        colorClass = "badge-green";
+    } else if (status === "Sắp diễn ra" || status === "Trung bình" || status === "Chưa công bố") {
+        colorClass = "badge-orange";
+    } else if (status === "Chưa đạt" || status === "Khó" || status === "Sai") {
+        colorClass = "badge-red";
     }
 
-    return '<span class="nhan-tt ' + mau + '">' + trangThai + "</span>";
+    return '<span class="status-badge ' + colorClass + '">' + status + "</span>";
 }
 
 /* Chạy khi trang vừa tải xong */
 document.addEventListener("DOMContentLoaded", function () {
-    batMenu();
+    initMenu();
 });
