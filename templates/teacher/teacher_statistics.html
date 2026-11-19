@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả &amp; thống kê - Giảng viên</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/teacher.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="main-wrapper">
+
+    <!-- ================= MENU BÊN TRÁI ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
+            <div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
+            </div>
+        </div>
+
+        <div class="section-label">
+            <small>Không gian làm việc</small>
+            <div>Giảng viên</div>
+        </div>
+
+        <div class="menu">
+            <a href="../teacher/teacher_dashboard.html" data-name="Tổng quan">
+                <i class="bi bi-grid"></i> Tổng quan
+            </a>
+            <a href="teacher_questions.html" data-name="Ngân hàng câu hỏi">
+                <i class="bi bi-journal-bookmark"></i> Ngân hàng câu hỏi
+            </a>
+            <a href="teacher_create_exam.html" data-name="Quản lý kỳ thi">
+                <i class="bi bi-clipboard-check"></i> Quản lý kỳ thi
+            </a>
+            <a href="teacher_statistics.html" data-name="Kết quả &amp; thống kê" class="active">
+                <i class="bi bi-bar-chart-line"></i> Kết quả &amp; thống kê
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="d-flex align-items-center gap-2 px-2 py-2"
+               style="font-size:13px;color:#44536b;">
+                <i class="bi bi-box-arrow-left"></i> Đăng xuất
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= NỘI DUNG ================= -->
+    <div class="content-area">
+
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Kết quả & thống kê</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">MT</div>
+                <div>
+                    <div class="user-name">Trần Thị Mỹ Tiên</div>
+                    <div class="user-role">Giảng viên - Khoa CNTT</div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
+            </div>
+        </div>
+
+        <div class="page-content">
+
+<div class="screen-view" id="statisticsScreen">
+                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+                    <div class="page-header">
+                        <h1>Kết quả &amp; thống kê</h1>
+                        <p>Theo dõi kết quả dự thi và xuất báo cáo theo kỳ thi.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-custom"><i class="bi bi-file-earmark-excel"></i> Xuất Excel</button>
+                        <button class="btn btn-outline-custom"><i class="bi bi-file-earmark-pdf"></i> Xuất PDF</button>
+                    </div>
+                </div>
+
+                <div class="card-box">
+                    <div class="card-body-custom">
+                        <div class="row g-2">
+                            <div class="col-lg-6">
+                                <label class="form-label">Kỳ thi</label>
+                                <select class="form-select">
+                                    <option>Kiểm tra giữa kỳ Công nghệ phần mềm</option>
+                                    <option>Kiểm tra chương 2 - Lập trình Java</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <label class="form-label">Lớp</label>
+                                <select class="form-select">
+                                    <option>CNTT-K25-123456</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <label class="form-label">Trạng thái</label>
+                                <select class="form-select">
+                                    <option>Đã kết thúc</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="hint-text">CNPM-2026-KTGK · 12/11/2026 · 08:00–09:00 · 30 câu · 45 phút · 1 lượt thi</div>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3" id="statisticsStatsContainer"></div>
+
+                <div class="row g-3">
+                    <!-- Biểu đồ phân bố điểm -->
+                    <div class="col-lg-8">
+                        <div class="card-box h-100 mb-0">
+                            <div class="card-header-custom">
+                                <h2>Phân bố điểm</h2>
+                                <p>Số bài thi theo khoảng điểm · 38 bài đã nộp</p>
+                            </div>
+                            <div class="card-body-custom pt-0">
+                                <div class="chart-container" id="scoreChart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tình hình tham gia -->
+                    <div class="col-lg-4">
+                        <div class="card-box h-100 mb-0">
+                            <div class="card-header-custom"><h2>Tình hình tham gia</h2></div>
+                            <div class="card-body-custom pt-2" id="participationStatusContainer"></div>
+                            <div class="card-body-custom pt-0">
+                                <div style="font-size:11.5px;color:var(--text-muted);line-height:1.6;">
+                                    Thống kê chỉ tính trên các lượt thi đã nộp. Các bài làm trọn một
+                                    phút vẫn được tính điểm.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kết quả sinh viên -->
+                <div class="card-box mt-3">
+                    <div class="card-header-custom d-flex justify-content-between align-items-start flex-wrap gap-2">
+                        <h2>Kết quả sinh viên</h2>
+                        <div class="d-flex gap-2">
+                            <select class="form-select form-select-sm" style="width:auto;">
+                                <option>Tất cả kết quả</option>
+                                <option>Đạt</option>
+                                <option>Chưa đạt</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width:auto;">
+                                <option>Đã nộp bài</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="card-body-custom">
+                        <div class="search-box">
+                            <i class="bi bi-search"></i>
+                            <input type="text" class="form-control" id="searchStudent"
+                                   placeholder="Tìm mã sinh viên, họ tên...">
+                        </div>
+                    </div>
+
+                    <div class="px-0">
+                        <table class="data-table">
+                            <thead>
+                            <tr>
+                                <th>Mã số sinh viên</th>
+                                <th>Họ và tên</th>
+                                <th>Lượt</th>
+                                <th>Thời gian</th>
+                                <th>Câu đúng</th>
+                                <th>Điểm</th>
+                                <th>Kết quả</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            </thead>
+                            <tbody id="studentResultsTable"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination-bar">
+                        <span>Hiển thị 1–6 trong 38 bài đã nộp</span>
+                        <div class="page-numbers">
+                            <button>‹</button>
+                            <button class="active">1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>›</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="page-footer">
+            <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
+            <span>Hệ thống thi trắc nghiệm</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/teacher.js"></script>
+</body>
+</html>
