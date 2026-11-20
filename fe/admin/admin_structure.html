@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cơ cấu đào tạo - Quản trị viên</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/admin.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="main-wrapper">
+
+    <!-- ================= MENU BÊN TRÁI ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
+            <div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
+            </div>
+        </div>
+
+        <div class="section-label">
+            <small>Không gian làm việc</small>
+            <div>Quản trị viên</div>
+        </div>
+
+        <div class="menu">
+            <a href="admin_dashboard.html" data-name="Tổng quan">
+                <i class="bi bi-grid"></i> Tổng quan
+            </a>
+            <a href="admin_users.html" data-name="Quản lý người dùng">
+                <i class="bi bi-people"></i> Quản lý người dùng
+            </a>
+            <a href="admin_roles.html" data-name="Vai trò &amp; phân quyền">
+                <i class="bi bi-shield-check"></i> Vai trò &amp; phân quyền
+            </a>
+            <a href="admin_structure.html" data-name="Cơ cấu đào tạo" class="active">
+                <i class="bi bi-diagram-3"></i> Cơ cấu đào tạo
+            </a>
+            <a href="admin_settings.html" data-name="Cấu hình hệ thống">
+                <i class="bi bi-gear"></i> Cấu hình hệ thống
+            </a>
+
+            <!-- Quản trị viên kế thừa quyền giảng viên -->
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-journal-bookmark"></i> Ngân hàng câu hỏi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-clipboard-check"></i> Quản lý kỳ thi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-bar-chart-line"></i> Kết quả &amp; thống kê
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="d-flex align-items-center gap-2 px-2 py-2"
+               style="font-size:13px;color:#44536b;">
+                <i class="bi bi-box-arrow-left"></i> Đăng xuất
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= NỘI DUNG ================= -->
+    <div class="content-area">
+
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Cơ cấu đào tạo</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">DD</div>
+                <div>
+                    <div class="user-name">Lê Đức Danh</div>
+                    <div class="user-role">Quản trị viên</div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
+            </div>
+        </div>
+
+        <div class="page-content">
+
+<div class="screen-view" id="structureScreen">
+                <div class="page-header mb-3">
+                    <h1>Quản lý cơ cấu đào tạo</h1>
+                    <p>Quản lý danh mục môn học, khóa học, lớp học và khối lớp của nhà trường.</p>
+                </div>
+
+                <div class="card-box">
+                    <div class="tab-row px-2" id="structureTabs">
+                        <button class="active">Môn học (36)</button>
+                        <button>Khóa học (12)</button>
+                        <button>Lớp học (32)</button>
+                        <button>Khối lớp (4)</button>
+                    </div>
+
+                    <div class="card-body-custom">
+                        <div class="row g-2">
+                            <div class="col-lg-7">
+                                <div class="search-box">
+                                    <i class="bi bi-search"></i>
+                                    <input type="text" class="form-control" id="searchSubject"
+                                           placeholder="Tìm mã môn, tên môn học...">
+                                </div>
+                            </div>
+                            <div class="col-7 col-lg-3">
+                                <select class="form-select">
+                                    <option>Tất cả khoa</option>
+                                    <option>Công nghệ thông tin</option>
+                                </select>
+                            </div>
+                            <div class="col-5 col-lg-2">
+                                <button class="btn btn-primary-custom w-100" id="addSubjectBtn">
+                                    <i class="bi bi-plus-lg"></i> Thêm
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-0">
+                        <table class="data-table">
+                            <thead>
+                            <tr>
+                                <th>Mã môn</th>
+                                <th>Tên môn học</th>
+                                <th>Số tín chỉ</th>
+                                <th>Khoa</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            </thead>
+                            <tbody id="subjectTable"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination-bar">
+                        <span>Hiển thị 1–5 trong 36 môn học</span>
+                        <div class="page-numbers">
+                            <button>‹</button>
+                            <button class="active">1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>›</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chỉnh sửa môn học -->
+                <div class="card-box">
+                    <div class="card-header-custom">
+                        <h2>Chỉnh sửa môn học</h2>
+                        <p>Môn học đang chọn: CNPM-Công nghệ phần mềm</p>
+                    </div>
+                    <div class="card-body-custom pt-2">
+                        <div class="row g-3">
+                            <div class="col-md-2">
+                                <label class="form-label">Mã môn <span style="color:#c0352f;">*</span></label>
+                                <input type="text" class="form-control" value="CNPM">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Tên môn học <span style="color:#c0352f;">*</span></label>
+                                <input type="text" class="form-control" value="Công nghệ phần mềm">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Số tín chỉ <span style="color:#c0352f;">*</span></label>
+                                <input type="number" class="form-control" value="3">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Khoa phụ trách <span style="color:#c0352f;">*</span></label>
+                                <select class="form-select">
+                                    <option>Công nghệ thông tin</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-outline-custom">Hủy</button>
+                            <button class="btn btn-primary-custom">Lưu môn học</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khóa học + Lớp học -->
+                <div class="row g-3">
+                    <div class="col-lg-6">
+                        <div class="card-box h-100 mb-0">
+                            <div class="card-header-custom d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h2>Khóa học</h2>
+                                    <p>Mẫu nội dung khi mở thẻ Khóa học.</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm"><i class="bi bi-plus-lg"></i> Thêm</button>
+                            </div>
+                            <div class="card-body-custom pt-2 px-0">
+                                <table class="data-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Khóa học</th>
+                                        <th>Niên khóa</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="cohortTable"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card-box h-100 mb-0">
+                            <div class="card-header-custom d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h2>Lớp học</h2>
+                                    <p>Mẫu nội dung khi mở thẻ Lớp học.</p>
+                                </div>
+                                <button class="btn btn-outline-custom btn-sm"><i class="bi bi-plus-lg"></i> Thêm</button>
+                            </div>
+                            <div class="card-body-custom pt-2 px-0">
+                                <table class="data-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Lớp / Khóa</th>
+                                        <th>Khối lớp</th>
+                                        <th>Sĩ số</th>
+                                        <th>Thao tác</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="classTable"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Khối lớp -->
+                <div class="card-box mt-3">
+                    <div class="card-header-custom d-flex justify-content-between align-items-start flex-wrap gap-2">
+                        <div>
+                            <h2>Khối lớp</h2>
+                            <p>Phân nhóm theo năm đào tạo.</p>
+                        </div>
+                        <button class="btn btn-outline-custom btn-sm"><i class="bi bi-plus-lg"></i> Thêm khối lớp</button>
+                    </div>
+                    <div class="card-body-custom pt-2">
+                        <div class="row g-3" id="gradeListContainer"></div>
+                        <div style="font-size:11.5px;color:var(--text-muted);margin-top:12px;">
+                            Mỗi lớp thuộc một khóa học và một khối lớp. Không thể xóa danh mục đang được sử dụng.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="page-footer">
+            <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
+            <span>Hệ thống thi trắc nghiệm</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/admin.js"></script>
+</body>
+</html>

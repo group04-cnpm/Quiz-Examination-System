@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vai trò &amp; phân quyền - Quản trị viên</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/admin.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="main-wrapper">
+
+    <!-- ================= MENU BÊN TRÁI ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
+            <div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
+            </div>
+        </div>
+
+        <div class="section-label">
+            <small>Không gian làm việc</small>
+            <div>Quản trị viên</div>
+        </div>
+
+        <div class="menu">
+            <a href="admin_dashboard.html" data-name="Tổng quan">
+                <i class="bi bi-grid"></i> Tổng quan
+            </a>
+            <a href="admin_users.html" data-name="Quản lý người dùng">
+                <i class="bi bi-people"></i> Quản lý người dùng
+            </a>
+            <a href="admin_roles.html" data-name="Vai trò &amp; phân quyền" class="active">
+                <i class="bi bi-shield-check"></i> Vai trò &amp; phân quyền
+            </a>
+            <a href="admin_structure.html" data-name="Cơ cấu đào tạo">
+                <i class="bi bi-diagram-3"></i> Cơ cấu đào tạo
+            </a>
+            <a href="admin_settings.html" data-name="Cấu hình hệ thống">
+                <i class="bi bi-gear"></i> Cấu hình hệ thống
+            </a>
+
+            <!-- Quản trị viên kế thừa quyền giảng viên -->
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-journal-bookmark"></i> Ngân hàng câu hỏi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-clipboard-check"></i> Quản lý kỳ thi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-bar-chart-line"></i> Kết quả &amp; thống kê
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="d-flex align-items-center gap-2 px-2 py-2"
+               style="font-size:13px;color:#44536b;">
+                <i class="bi bi-box-arrow-left"></i> Đăng xuất
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= NỘI DUNG ================= -->
+    <div class="content-area">
+
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Vai trò & phân quyền</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">DD</div>
+                <div>
+                    <div class="user-name">Lê Đức Danh</div>
+                    <div class="user-role">Quản trị viên</div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
+            </div>
+        </div>
+
+        <div class="page-content">
+
+<div class="screen-view" id="rolesScreen">
+                <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap gap-2">
+                    <div class="page-header">
+                        <h1>Vai trò &amp; phân quyền</h1>
+                        <p>Ba vai trò cố định, phân tách rõ phạm vi học tập, giảng dạy và quản trị.</p>
+                    </div>
+                    <button class="btn btn-primary-custom" id="savePermissionsBtn">
+                        <i class="bi bi-save"></i> Lưu phân quyền
+                    </button>
+                </div>
+
+                <div class="row g-3 mb-3" id="roleCards"></div>
+
+                <div class="card-box">
+                    <div class="card-header-custom"><h2>Quyền truy cập</h2></div>
+                    <div class="card-body-custom pt-2 px-0">
+                        <table class="data-table permission-table">
+                            <thead>
+                            <tr>
+                                <th>Chức năng / Phạm vi</th>
+                                <th>Sinh viên</th>
+                                <th>Giảng viên</th>
+                                <th>Quản trị viên</th>
+                            </tr>
+                            </thead>
+                            <tbody id="permissionTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="alert-box alert-blue">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <div>
+                        <b>Phạm vi áp dụng</b>
+                        • Sinh viên chỉ xem kỳ thi được phân công và kết quả của chính mình.<br>
+                        • Giảng viên quản lý dữ liệu trong phạm vi môn học phụ trách.<br>
+                        • Quản trị viên quản lý toàn hệ thống và kế thừa quyền giảng viên.
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="page-footer">
+            <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
+            <span>Hệ thống thi trắc nghiệm</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/admin.js"></script>
+</body>
+</html>
