@@ -1,0 +1,131 @@
+/* ---------- Hàng "nhãn - giá trị" ---------- */
+.admin-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    font-size: 12.5px;
+    border-bottom: 1px solid #f2f4f8;
+}
+
+.admin-row:last-child {
+    border-bottom: none;
+}
+
+.admin-row .label {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.admin-row .value {
+    font-weight: 600;
+    text-align: right;
+}
+
+/* ---------- Link chức năng giảng viên ---------- */
+.feature-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #44536b;
+}
+
+.feature-link:hover {
+    border-color: var(--primary-blue);
+    background: #f7faff;
+    color: var(--dark-blue);
+}
+
+.feature-link i:first-child {
+    color: var(--primary-blue);
+}
+
+.feature-link .arrow-icon {
+    margin-left: auto;
+    font-size: 11px;
+    color: #9aa8bd;
+}
+
+/* ---------- Thẻ vai trò ---------- */
+.role-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px 16px;
+    height: 100%;
+}
+
+.role-card .name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.role-card .account-count {
+    font-size: 13px;
+    color: var(--dark-blue);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.role-card .description {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ---------- Bảng phân quyền ---------- */
+.permission-table td:not(:first-child) {
+    text-align: center;
+}
+
+.permission-table th:not(:first-child) {
+    text-align: center;
+}
+
+.allowed {
+    color: #0f7a4a;
+    font-size: 12.5px;
+    white-space: nowrap;
+}
+
+.denied {
+    color: #9aa8bd;
+    font-size: 12.5px;
+}
+
+/* ---------- Khối lớp ---------- */
+.grade-box {
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    padding: 12px 14px;
+    text-align: center;
+}
+
+.grade-box .name {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.grade-box .details {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.grade-box .actions a {
+    font-size: 12px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 767.98px) {
+    /* Bảng phân quyền trên điện thoại: xếp dọc, căn phải */
+    .permission-table td:not(:first-child) {
+        text-align: right;
+    }
+}
