@@ -1,0 +1,261 @@
+/* ---------- Thanh các bước (Bước 1 / Bước 2) ---------- */
+.step-bar {
+    display: flex;
+    background: #fafbfd;
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.step-bar .step {
+    flex: 1;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border-right: 1px solid var(--border-color);
+}
+
+.step-bar .step:last-child {
+    border-right: none;
+}
+
+.step-bar .step.in-progress {
+    background: #fff;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.step-bar .step.completed {
+    color: #0f7a4a;
+}
+
+.step-bar .step-number {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e4e8ef;
+    color: #5a6b85;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.step-bar .step.in-progress .step-number {
+    background: var(--primary-blue);
+    color: #fff;
+}
+
+/* ---------- Thẻ chọn ---------- */
+.option-box {
+    border: 1px solid var(--border-color);
+    border-radius: 9px;
+    padding: 13px 14px;
+    cursor: pointer;
+    height: 100%;
+}
+
+.option-box.active {
+    border-color: var(--primary-blue);
+    background: #f7faff;
+}
+
+.option-box .top {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 600;
+    font-size: 13.5px;
+    margin-bottom: 5px;
+}
+
+.option-box .description {
+    font-size: 12px;
+    color: var(--text-muted);
+    padding-left: 25px;
+    line-height: 1.55;
+}
+
+/* ---------- Thanh thao tác dưới cùng ---------- */
+.bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 16px;
+    flex-wrap: wrap;
+}
+
+.bottom-bar .summary {
+    font-size: 12.5px;
+    color: var(--text-muted);
+}
+
+/* ---------- Ngân hàng theo môn học ---------- */
+.subject-row {
+    margin-bottom: 13px;
+}
+
+.subject-row .top-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    margin-bottom: 5px;
+}
+
+.subject-row .question-count {
+    font-weight: 600;
+}
+
+/* ---------- Thẻ tóm tắt bên phải ---------- */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    font-size: 12.5px;
+    border-bottom: 1px solid #f2f4f8;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row .label {
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+.summary-row .value {
+    font-weight: 600;
+    text-align: right;
+}
+
+/* ---------- Biểu đồ cột phân bố điểm ---------- */
+.chart-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 14px;
+    height: 180px;
+    padding: 10px 6px 0;
+}
+
+.chart-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    max-width: 70px;
+}
+
+.chart-column .submission-count {
+    font-size: 11.5px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.chart-column .bar {
+    width: 100%;
+    background: var(--primary-blue);
+    border-radius: 5px 5px 0 0;
+    min-height: 4px;
+}
+
+.chart-column .bar.red {
+    background: #ef4444;
+}
+
+.chart-column .bar-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 7px;
+    text-align: center;
+}
+
+/* ---------- Khung đáp án A B C D ---------- */
+.edit-answer-row {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin-bottom: 9px;
+}
+
+.edit-answer-row .letter {
+    font-weight: 700;
+    font-size: 13px;
+    width: 14px;
+    color: var(--text-muted);
+}
+
+.edit-answer-row input[type="text"] {
+    flex: 1;
+}
+
+.edit-answer-row.is-correct input[type="text"] {
+    border-color: var(--primary-blue);
+    background: #f7faff;
+}
+
+/* ---------- Khung điểm lớn ở màn thống kê ---------- */
+.big-number {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.big-number-label {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .step-bar {
+        flex-direction: column;
+    }
+
+    .step-bar .step {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .step-bar .step:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .chart-container {
+        height: 140px;
+        gap: 8px;
+    }
+
+    .bottom-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .bottom-bar .button-group {
+        display: flex;
+        gap: 8px;
+    }
+
+    .bottom-bar .button-group .btn {
+        flex: 1;
+    }
+
+    .chart-column .bar-label {
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu hình hệ thống - Quản trị viên</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="stylesheet" href="../../static/css/admin.css">
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="main-wrapper">
+
+    <!-- ================= MENU BÊN TRÁI ================= -->
+    <div class="sidebar" id="sidebar">
+        <div class="school-logo">
+            <div class="logo-square"><i class="bi bi-mortarboard-fill"></i></div>
+            <div>
+                <div class="logo-title">ĐẠI HỌC GTVT HCM</div>
+                <div class="logo-desc">Hệ thống thi trắc nghiệm</div>
+            </div>
+        </div>
+
+        <div class="section-label">
+            <small>Không gian làm việc</small>
+            <div>Quản trị viên</div>
+        </div>
+
+        <div class="menu">
+            <a href="admin_dashboard.html" data-name="Tổng quan">
+                <i class="bi bi-grid"></i> Tổng quan
+            </a>
+            <a href="admin_users.html" data-name="Quản lý người dùng">
+                <i class="bi bi-people"></i> Quản lý người dùng
+            </a>
+            <a href="admin_roles.html" data-name="Vai trò &amp; phân quyền">
+                <i class="bi bi-shield-check"></i> Vai trò &amp; phân quyền
+            </a>
+            <a href="admin_structure.html" data-name="Cơ cấu đào tạo">
+                <i class="bi bi-diagram-3"></i> Cơ cấu đào tạo
+            </a>
+            <a href="admin_settings.html" data-name="Cấu hình hệ thống" class="active">
+                <i class="bi bi-gear"></i> Cấu hình hệ thống
+            </a>
+
+            <!-- Quản trị viên kế thừa quyền giảng viên -->
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-journal-bookmark"></i> Ngân hàng câu hỏi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-clipboard-check"></i> Quản lý kỳ thi
+            </a>
+            <a href="../teacher/teacher_dashboard.html">
+                <i class="bi bi-bar-chart-line"></i> Kết quả &amp; thống kê
+            </a>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="current-semester">Học kỳ N • 2026–2027</div>
+            <a href="../login.html" class="d-flex align-items-center gap-2 px-2 py-2"
+               style="font-size:13px;color:#44536b;">
+                <i class="bi bi-box-arrow-left"></i> Đăng xuất
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= NỘI DUNG ================= -->
+    <div class="content-area">
+
+        <div class="top-bar">
+            <button class="menu-btn" id="menuBtn"><i class="bi bi-list"></i></button>
+            <div class="breadcrumb-path" id="breadcrumbPath"><i class="bi bi-house"></i> / <b>Cấu hình hệ thống</b></div>
+            <button class="bell-btn"><i class="bi bi-bell"></i><span class="red-dot"></span></button>
+            <div class="user-box">
+                <div class="user-avatar">DD</div>
+                <div>
+                    <div class="user-name">Lê Đức Danh</div>
+                    <div class="user-role">Quản trị viên</div>
+                </div>
+                <i class="bi bi-chevron-down" style="font-size:11px;color:#9aa8bd;"></i>
+            </div>
+        </div>
+
+        <div class="page-content">
+
+<div class="screen-view" id="settingsScreen">
+                <div class="page-header mb-3">
+                    <h1>Cấu hình hệ thống</h1>
+                    <p>Thiết lập thông tin chung, năm học và giá trị mặc định cho kỳ thi.</p>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-lg-8">
+                        <!-- Thông tin chung -->
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Thông tin chung</h2></div>
+                            <div class="card-body-custom pt-2">
+                                <div class="mb-3">
+                                    <label class="form-label">Tên hệ thống <span style="color:#c0352f;">*</span></label>
+                                    <input type="text" class="form-control" id="systemName"
+                                           value="Hệ thống thi trắc nghiệm">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Tên đơn vị <span style="color:#c0352f;">*</span></label>
+                                    <input type="text" class="form-control"
+                                           value="Trường Đại học Giao thông vận tải Hồ Chí Minh">
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Ngôn ngữ hiển thị</label>
+                                        <select class="form-select">
+                                            <option>Tiếng Việt</option>
+                                            <option>English</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Múi giờ</label>
+                                        <select class="form-select">
+                                            <option>Việt Nam (UTC+7)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Năm học & học kỳ -->
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Năm học &amp; học kỳ hiện tại</h2></div>
+                            <div class="card-body-custom pt-2">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Năm học <span style="color:#c0352f;">*</span></label>
+                                        <select class="form-select">
+                                            <option>2026–2027</option>
+                                            <option>2025–2026</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Học kỳ <span style="color:#c0352f;">*</span></label>
+                                        <select class="form-select">
+                                            <option>Học kỳ N</option>
+                                            <option>Học kỳ I</option>
+                                            <option>Học kỳ II</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="hint-text">
+                                    Được sử dụng làm bộ lọc mặc định trong tổng quan, danh sách kỳ thi và báo cáo.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Giá trị mặc định -->
+                        <div class="card-box">
+                            <div class="card-header-custom"><h2>Giá trị mặc định khi tạo kỳ thi</h2></div>
+                            <div class="card-body-custom pt-2">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label">Thời lượng (phút) <span style="color:#c0352f;">*</span></label>
+                                        <input type="number" class="form-control" id="defaultDuration" value="45">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Số lượt thi tối đa <span style="color:#c0352f;">*</span></label>
+                                        <input type="number" class="form-control" id="defaultAttempts" value="1">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label">Thang điểm</label>
+                                        <input type="number" class="form-control" id="defaultScale" value="10">
+                                    </div>
+                                </div>
+
+                                <div class="alert-box alert-blue mt-3 mb-0">
+                                    <i class="bi bi-info-circle-fill"></i>
+                                    <div>
+                                        <b>Không thay đổi kỳ thi đã cấu hình</b>
+                                        Các giá trị trên chỉ áp dụng cho biểu mẫu tạo mới. Giảng viên có thể
+                                        điều chỉnh lịch thi, thời lượng, mật khẩu và xáo trộn tại cấu hình từng kỳ thi.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cột phải -->
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <div class="card-header-custom d-flex justify-content-between align-items-start">
+                                <h2>Thông tin cấu hình</h2>
+                                <span class="status-badge badge-green">Đang áp dụng</span>
+                            </div>
+                            <div class="card-body-custom pt-2">
+                                <div class="admin-row">
+                                    <span class="label">Cập nhật gần nhất</span>
+                                    <span class="value">11/11/2026 · 15:10</span>
+                                </div>
+                                <div class="admin-row">
+                                    <span class="label">Bởi</span>
+                                    <span class="value">Lê Đức Danh (Quản trị viên)</span>
+                                </div>
+                                <div style="font-size:11.5px;color:var(--text-muted);margin-top:10px;line-height:1.6;">
+                                    Những thay đổi cấu hình được ghi nhận trong lịch sử hoạt động tại trang tổng quan.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert-box alert-orange">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                            <div>
+                                <b>Kiểm tra trước khi lưu</b>
+                                Thông tin chung hiển thị trên toàn hệ thống. Vui lòng kiểm tra năm học
+                                và học kỳ hiện tại.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <button class="btn btn-outline-custom">Hủy thay đổi</button>
+                    <button class="btn btn-primary-custom" id="saveConfigBtn">
+                        <i class="bi bi-save"></i> Lưu cấu hình
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="page-footer">
+            <span>Trường Đại học Giao thông vận tải Hồ Chí Minh</span>
+            <span>Hệ thống thi trắc nghiệm</span>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../static/js/common.js"></script>
+<script src="../../static/js/admin.js"></script>
+</body>
+</html>
