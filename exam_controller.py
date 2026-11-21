@@ -6,7 +6,8 @@ class ExamController:
     def get_open_exams():
         conn = get_connection()
         rows = conn.execute('''
-            SELECT e.*, s.subject_name, u.full_name as teacher_name, es.schedule_id,
+            SELECT e.*, s.subject_name, u.full_name as teacher_name,
+                   es.schedule_id, es.start_time, es.end_time,
                    (SELECT COUNT(*) FROM exam_questions eq WHERE eq.exam_id = e.exam_id) as q_count
             FROM exams e
             JOIN subjects s ON e.subject_id = s.subject_id
