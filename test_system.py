@@ -1,4 +1,3 @@
-
 import pytest
 from teacher_controller import TeacherController
 
