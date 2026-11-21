@@ -1,6 +1,5 @@
-
 import pytest
-from controllers.teacher_controller import TeacherController
+from teacher_controller import TeacherController
 
 
 def test_tc02_add_question_empty_content(monkeypatch):
