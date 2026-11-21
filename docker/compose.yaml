@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "${HOST_PORT:-5000}:5000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in .env}
+      FLASK_DEBUG: ${FLASK_DEBUG:-0}
+      PORT: "5000"
+      QUIZ_DATABASE_PATH: /data/quiz.db
+    volumes:
+      - quiz_data:/data
+    restart: unless-stopped
+
+volumes:
+  quiz_data:
