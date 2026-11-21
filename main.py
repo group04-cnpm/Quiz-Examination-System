@@ -1,11 +1,16 @@
+import os
+
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from database import init_db, get_connection
-from controllers.auth_controller import AuthController
-from controllers.exam_controller import ExamController
-from controllers.teacher_controller import TeacherController
+from auth_controller import AuthController
+from exam_controller import ExamController
+from teacher_controller import TeacherController
+from api_routes import api
 
 app = Flask(__name__)
 app.secret_key = "group04_quiz_secret_key"
+app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", "0").strip().lower() in {"1", "true", "yes"}
+app.register_blueprint(api)
 
 @app.route("/", methods=["GET", "POST"])
 def login():
@@ -38,7 +43,7 @@ def student_dashboard():
         return redirect(url_for("login"))
     exams = ExamController.get_open_exams()
     history = ExamController.get_student_history(session["user"]["user_id"])
-    return render_template("student_dashboard.html", user=session["user"], exams=exams, history=history)
+    return render_template("student/student_dashboard.html", user=session["user"], exams=exams, history=history)
 
 @app.route("/student/exam/<int:exam_id>/<int:schedule_id>")
 def take_exam(exam_id, schedule_id):
@@ -50,7 +55,7 @@ def take_exam(exam_id, schedule_id):
     
     attempt = ExamController.start_or_resume_attempt(session["user"]["user_id"], schedule_id)
     paper = ExamController.get_exam_paper(exam_id, attempt["attempt_id"])
-    return render_template("take_exam.html", user=session["user"], exam=exam, attempt=attempt, paper=paper)
+    return render_template("student/student_exams.html", user=session["user"], exam=exam, attempt=attempt, paper=paper)
 
 @app.route("/api/autosave", methods=["POST"])
 def api_autosave():
@@ -69,7 +74,7 @@ def teacher_dashboard():
     if "user" not in session or session["user"]["role"] != "Teacher":
         return redirect(url_for("login"))
     data = TeacherController.get_dashboard_data(session["user"]["user_id"])
-    return render_template("teacher_dashboard.html", user=session["user"], data=data)
+    return render_template("teacher/teacher_dashboard.html", user=session["user"], data=data)
 
 @app.route("/teacher/add_question", methods=["POST"])
 def add_question():
@@ -113,8 +118,12 @@ def admin_dashboard():
         "results": conn.execute("SELECT COUNT(*) FROM exam_results").fetchone()[0]
     }
     conn.close()
-    return render_template("admin_dashboard.html", user=session["user"], users=users, logs=logs, stats=stats)
+    return render_template("admin/admin_dashboard.html", user=session["user"], users=users, logs=logs, stats=stats)
 
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True, port=5000)
+    app.run(
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", "5000")),
+        debug=app.config["DEBUG"],
+    )
